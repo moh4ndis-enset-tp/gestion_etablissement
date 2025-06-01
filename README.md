@@ -56,32 +56,37 @@ Le programme affichera :
 
 ## Diagramme de Classes
 
-```
-                     +-------------+
-                     |   Personne  |
-                     +-------------+
-                     | -nom        |
-                     | -prenom     |
-                     | -age        |
-                     | -adresse    |
-                     +-------------+
-                     | +toString() |
-                     | +ecrire...  |
-                     | +modifier...|
-                     +-------------+
-                            ^
-                            |
-        +-------------------+-------------------+
-        |                   |                   |
-+---------------+  +----------------+  +---------------+
-|  Enseignant   |  |    Etudiant    |  |  Secretaire   |
-+---------------+  +----------------+  +---------------+
-| -nbHeuresCours|  | -noteMoyenne   |  | -numeroBureau |
-| -grincheux    |  | -diplomeEnCours|  +---------------+
-| -specialite   |  +----------------+  | +toString()   |
-+---------------+  | +toString()    |  | +ecrire...    |
-| +toString()   |  | +ecrire...     |  +---------------+
-| +ecrire...    |  +----------------+
-| +salaire...   |
-+---------------+
-```
+```mermaid
+classDiagram
+    class Personne {
+        - nom
+        - prenom
+        - age
+        - adresse
+        + toString()
+        + ecrirePersonne()
+        + modifierPersonne()
+    }
+    class Enseignant {
+        - nbHeuresCours
+        - grincheux
+        - specialite
+        + toString()
+        + ecrirePersonne()
+        + salaire()
+    }
+    class Etudiant {
+        - noteMoyenne
+        - diplomeEnCours
+        + toString()
+        + ecrirePersonne()
+    }
+    class Secretaire {
+        - numeroBureau
+        + toString()
+        + ecrirePersonne()
+    }
+    Personne <|-- Enseignant
+    Personne <|-- Etudiant
+    Personne <|-- Secretaire
+```_
